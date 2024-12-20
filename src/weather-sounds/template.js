@@ -1,26 +1,20 @@
 
-import "../app.scss";
 
-export function template({urlAudio1, urlIconSun1, urlAudio2, urlIconSun2, urlAudio3, urlIconSun3}) {
+export function template(configTempalte) {
     const root = document.getElementById("root");
+    let musicBlock = ""
+
+    configTempalte.forEach(({audio, icon, className, title}) => {
+      musicBlock = musicBlock + `<button class="${className}">
+                    <audio id="${title}" src="${audio}" type="audio/mpeg"></audio>
+                    <img class="icon" src="${icon}" alt="icon">
+                  </button>`
+    });
     root.innerHTML =`
         <section>
           <h1>Weather sounds</h1>
           <div class="container">
-            <button class="music-block-summer-bg">
-              <audio id="audioSummer" src="${urlAudio1}" type="audio/mpeg"></audio>
-              <img class="icon" src="${urlIconSun1}" alt="icon">
-            </button>
-    
-            <button class="music-block-rainy-bg">
-              <audio id="audioRain" src="${urlAudio2}" type="audio/mpeg"></audio>
-              <img class="icon" src="${urlIconSun2}" alt="icon">
-            </button>
-    
-            <button class="music-block-winter-bg">
-              <audio id="audioWinter" src="${urlAudio3}" type="audio/mpeg"></audio>
-              <img class="icon" src="${urlIconSun3}" alt="icon">
-            </button>
+            ${musicBlock}
           </div>
         </section>
         <input id="input" type="range" min="0" max="1" step="0.01" value="0.5">

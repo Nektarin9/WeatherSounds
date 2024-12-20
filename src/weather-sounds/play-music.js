@@ -1,40 +1,16 @@
-import { IS_PAUSE } from "./index";
+import { config } from "../app";
 
-export function playMusic(type) {
-  if (type === "AUDIO_SUMMER") {
-    audioRain.pause();
-    audioWinter.pause();
+export function playMusic(id) {
+  const { isPause } = config;
+  const audio = document.querySelectorAll("button > audio");
 
-    if (IS_PAUSE.IS_PAUSE_SUMMER) {
-      audioSummer.pause();
+  isPause.forEach((item, index) => {
+    audio[index].pause();
+    if (id === item.title) {
+      item.isPauseAudio ? audio[index].pause() : audio[index].play();
+      item.isPauseAudio = !item.isPauseAudio;
     } else {
-      audioSummer.play();
+      item.isPauseAudio = false;
     }
-    (IS_PAUSE.IS_PAUSE_SUMMER = !IS_PAUSE.IS_PAUSE_SUMMER),
-      (IS_PAUSE.IS_PAUSE_RAINT = false),
-      (IS_PAUSE.IS_PAUSE_WINTER = false);
-  } else if (type === "AUDIO_RAINT") {
-    audioSummer.pause();
-    audioWinter.pause();
-
-    if (IS_PAUSE.IS_PAUSE_RAINT) {
-      audioRain.pause();
-    } else {
-      audioRain.play();
-    }
-    (IS_PAUSE.IS_PAUSE_SUMMER = false),
-      (IS_PAUSE.IS_PAUSE_RAINT = !IS_PAUSE.IS_PAUSE_RAINT),
-      (IS_PAUSE.IS_PAUSE_WINTER = false);
-  } else if (type === "AUDIO_WINTER") {
-    audioRain.pause();
-    audioSummer.pause();
-    if (IS_PAUSE.IS_PAUSE_WINTER) {
-      audioWinter.pause();
-    } else {
-      audioWinter.play();
-    }
-    (IS_PAUSE.IS_PAUSE_SUMMER = false),
-      (IS_PAUSE.IS_PAUSE_RAINT = false),
-      (IS_PAUSE.IS_PAUSE_WINTER = !IS_PAUSE.IS_PAUSE_WINTER);
-  }
+  });
 }

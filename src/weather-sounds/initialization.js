@@ -1,24 +1,13 @@
+import { handlerAudio } from "./index";
 
-import { SONG_TITLE, IMAGE_URL, handlerAudio} from "./index"
-
-export function initialization() {
-    const audioSummer = document.getElementById("audioSummer")
-    const audioRain = document.getElementById("audioRain")
-    const audioWinter = document.getElementById("audioWinter")
-
-    const btnAudioSummer = document.querySelector(".music-block-summer-bg")
-    const btnAudioRain = document.querySelector(".music-block-rainy-bg")
-    const btnAudioWinter = document.querySelector(".music-block-winter-bg")
-
-    const inpuеRangeVolume = document.getElementById("input")
-
-
-    inpuеRangeVolume.addEventListener("input", ({target}) => {
-        audioSummer.volume = target.value
-        audioRain.volume  = target.value
-        audioWinter.volume  = target.value
-    })
-    handlerAudio(btnAudioSummer, SONG_TITLE.AUDIO_SUMMER, IMAGE_URL.IMG_SUMMER)
-    handlerAudio(btnAudioRain, SONG_TITLE.AUDIO_RAINT, IMAGE_URL.IMG_RAINT)
-    handlerAudio(btnAudioWinter, SONG_TITLE.AUDIO_WINTER, IMAGE_URL.IMG_WINTER)
+export function initialization(config) {
+  const audio = document.querySelectorAll("button > audio");
+  const btn = document.querySelectorAll("button")
+  const inputRangeVolume = document.getElementById("input");
+  inputRangeVolume.addEventListener("input", ({ target }) => {
+    audio.forEach((item) => (item.volume = target.value));
+  });
+  for (let i = 0; i < audio.length; i++) {
+    handlerAudio(btn[i], config.IMAGE_URL[i], config.isPause[i].title);
+  }
 }

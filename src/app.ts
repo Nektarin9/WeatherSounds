@@ -1,5 +1,6 @@
 import "./app.scss";
 
+
 import { template, initialization } from "./weather-sounds";
 
 import IMG_SUMMER from "../public/assets/summer-bg.jpg";
@@ -14,7 +15,9 @@ import audioSun from "../public/sounds/summer.mp3";
 import audioRain from "../public/sounds/rain.mp3";
 import audioSnow from "../public/sounds/winter.mp3";
 
-const configTempalte = [
+import { ConfigTempalteType, ConfigType } from "./weather-sounds/interface";
+
+const configTempalte: ConfigTempalteType[] = [
   {
     audio: audioSun,
     icon: iconSun,
@@ -37,7 +40,7 @@ const configTempalte = [
 
 template(configTempalte);
 
-export const config = {
+export const config: ConfigType = {
   IMAGE_URL: [IMG_SUMMER, IMG_RAINT, IMG_WINTER],
   isPause: [
     {

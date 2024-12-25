@@ -1,7 +1,7 @@
+import { ConfigTempalteType } from "./interface";
 
-
-export function template(configTempalte) {
-    const root = document.getElementById("root");
+export function template(configTempalte: ConfigTempalteType[]) {
+    const root = document.getElementById("root") as HTMLDivElement;
     let musicBlock = ""
 
     configTempalte.forEach(({audio, icon, className, title}) => {

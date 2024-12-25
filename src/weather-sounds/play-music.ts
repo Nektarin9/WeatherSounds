@@ -1,8 +1,8 @@
 import { config } from "../app";
 
-export function playMusic(id) {
+export function playMusic(id: string) {
   const { isPause } = config;
-  const audio = document.querySelectorAll("button > audio");
+  const audio = document.querySelectorAll("button > audio") as NodeListOf<HTMLAudioElement>
 
   isPause.forEach((item, index) => {
     audio[index].pause();

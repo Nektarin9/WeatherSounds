@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "target": "es6",                       // Укажите целевую версию ECMAScript
+    "module": "commonjs",                  // Укажите модульную систему (commonjs, esnext и т.д.)
+    "strict": true,                        // Включает все строгие проверки типов
+    "esModuleInterop": true,               // Позволяет использовать CommonJS модули
+    "skipLibCheck": true,                  // Пропустить проверку типов в файлах библиотек
+    "forceConsistentCasingInFileNames": true, // Обеспечивает согласованность регистров в именах файлов
+    "baseUrl": "./",                       // Базовый URL для разрешения модулей
+    "paths": {
+      "*": ["node_modules/*", "src/types/*"] // Укажите пути для разрешения модулей
+    }
+  },
+  "include": [
+    "src/**/*",                            // Включает все файлы в папке src
+    "declarations.d.ts"                   // Убедитесь, что файл деклараций включен
+  ],
+  "exclude": [
+    "node_modules",                        // Исключает папку node_modules
+    "**/*.spec.ts"                        // Исключает тестовые файлы
+  ],
+}
+
